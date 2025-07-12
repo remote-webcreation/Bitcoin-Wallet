@@ -12,7 +12,7 @@ const keyPair = ECPair.makeRandom({ network });
 
 // WIF = "Wallet Import Format" (für Backup)
 const privateKey = keyPair.toWIF();
-const { address } = bitcoin.payments.p2pkh({
+const { address } = bitcoin.payments.p2wpkh({
     pubkey: Buffer.from(keyPair.publicKey),
     network,
 });
