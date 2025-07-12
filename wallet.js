@@ -3,6 +3,7 @@ import { ECPairFactory } from 'ecpair';
 import * as ecc from 'tiny-secp256k1';
 // Netzwerk: Testnet statt Mainnet!
 import { writeFileSync } from 'fs';
+import { Buffer } from 'buffer';
 
 const ECPair = ECPairFactory(ecc);
 
@@ -13,8 +14,8 @@ const keyPair = ECPair.makeRandom({ network });
 // WIF = "Wallet Import Format" (für Backup)
 const privateKey = keyPair.toWIF();
 const { address } = bitcoin.payments.p2wpkh({
-    pubkey: Buffer.from(keyPair.publicKey),
-    network,
+  pubkey: Buffer.from(keyPair.publicKey),
+  network,
 });
 
 console.log("🚀 Deine Testnet-Adresse:", address);
